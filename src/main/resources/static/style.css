@@ -1,0 +1,30 @@
+
+#rounded {
+  border-radius: 25px;
+  background: #b2beb5;
+  padding: 5px;
+  width: 200px;
+  height: 300px;
+}
+#name{
+	margin: 20px;
+	
+}
+img{
+	margin-right: 60px ;
+	margin-left: 60px ;
+}
+
+.box{
+        display: inline-block;
+        width: 310px;
+        height: 310px;
+}
+
+ .box div {
+        width: 100px;
+        padding: 15px;
+        text-align: center;
+        color: #000000;
+        font-family: arial, sans-serif;
+      }
