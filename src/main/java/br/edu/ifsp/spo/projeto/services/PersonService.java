@@ -14,7 +14,7 @@ import br.edu.ifsp.spo.projeto.repository.PersonRepository;
 @Service
 public class PersonService {
 	private final PersonRepository personRepository;
-	
+
 
 	@Autowired
 	public PersonService(PersonRepository personRepository) {
@@ -26,10 +26,10 @@ public class PersonService {
 	}
 
 	public Page<Person> findPage(int pageNumber){
-		Pageable pageable = PageRequest.of(pageNumber - 1, 9);
+		Pageable pageable = PageRequest.of(pageNumber - 1, 8);
 		return personRepository.findAll(pageable);
 	}
-	
+
 	public Iterable<Person> save(List<Person> persons){
 		return personRepository.saveAll(persons);
 

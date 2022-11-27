@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.opencsv.bean.CsvBindByName;
+
 
 @Entity
 @Table
@@ -27,9 +29,13 @@ public class Person {
 			this.id = id;
 		}
 
+	@CsvBindByName
 	private String gender;
+	@CsvBindByName
 	private String email;
+	@CsvBindByName
 	private String phone;
+	@CsvBindByName
 	private String cell;
 	@Embedded
 	private Name name;
@@ -37,6 +43,7 @@ public class Person {
 	private Location location;
 	@Embedded
 	private Dob dob;
+	@CsvBindByName
 	@Embedded
 	private Registered registered;
 	@Embedded

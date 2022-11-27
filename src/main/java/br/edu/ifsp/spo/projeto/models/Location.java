@@ -3,12 +3,20 @@ package br.edu.ifsp.spo.projeto.models;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 
+import com.opencsv.bean.CsvBindByName;
+
+import br.edu.ifsp.spo.projeto.utils.Region;
+
 @Embeddable
 public class Location {
 
+	@CsvBindByName
 	private String street;
+	@CsvBindByName
 	private String city;
+	@CsvBindByName
 	private String state;
+	@CsvBindByName
 	private String postcode;
 	@Embedded
 	private Coordinates coordinates;
@@ -53,7 +61,15 @@ public class Location {
 		this.timezone = timezone;
 	}
 
-	public Location() {}
+
+
+
+	public String getRegion(){
+		Region rg = new Region();
+		return rg.getRegion(state);
+	}
+	public Location() {
+	}
 
 
 

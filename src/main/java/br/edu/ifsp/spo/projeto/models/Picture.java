@@ -2,11 +2,16 @@ package br.edu.ifsp.spo.projeto.models;
 
 import javax.persistence.Embeddable;
 
+import com.opencsv.bean.CsvBindByName;
+
 @Embeddable
 public class Picture {
 
+	@CsvBindByName
 	private String large;
+	@CsvBindByName
 	private String medium;
+	@CsvBindByName
 	private String thumbnail;
 
 

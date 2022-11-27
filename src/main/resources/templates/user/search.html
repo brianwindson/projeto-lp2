@@ -8,9 +8,9 @@
  		<link rel="stylesheet" type="text/css" href="static/style.css"/>
 	  </head>
 	  <body style="background-color:#706e66;">
-	  <div class="navbar">
+	<div class="navbar">
 		  <a href="/home">About</a>
-		  <a href="1">Lista</a>
+		  <a href="/pessoas/lista/1">Lista</a>
 		  <div class="dropdown">
 		  <button class="dropbtn" onclick="myFunction()">Regiões
 		    <i class="fa fa-caret-down"></i>
@@ -24,13 +24,9 @@
 		  </div>
 		  </div> 
 		</div>
-	
 	  <h2>Pessoas</h2>
-	 
-	  
-	  
 	  <div	th:each="person: ${persons}" class="box">
-	  		<div  class="row" id="rounded">
+	  		<div th:if="${person.location.region} ==  ${region}" class=row id="rounded">
 	  			<p><img th:src="${person.picture.medium}"></img></p>
 	  			<p id="name"><a th:href="@{'/pessoas/' + ${#strings.toString(person.id)}}"><span th:text="${#strings.capitalize(person.name.first)}">   </span>  <span th:text=" ${#strings.capitalize(person.name.last)}" >  </span></a></p>
 	  			<p id="name"><span th:text="${#strings.capitalizeWords(#strings.substring((person.location.street),4))}" >  </span> <span th:text="${#strings.substring((person.location.street),0,4)}"> </span></p>
@@ -42,7 +38,6 @@
 	  	
 	  	
 	  </div>
-	  
 	  <script>
 		
 		function myFunction() {
@@ -66,7 +61,7 @@
     Total Items [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
     &nbsp; &nbsp; - &nbsp;
     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-        <a th:href="@{'/pessoas/lista/' + ${i}}">[[${i}]]</a>
+        <a th:href="@{'/pessoas/search/' + ${region} + '/' + ${i}}">[[${i}]]</a>
         &nbsp; &nbsp;
     </span>
 </footer>

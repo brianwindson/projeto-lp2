@@ -6,6 +6,8 @@ import br.edu.ifsp.spo.projeto.models.Person;
 
 
 public interface PersonRepository extends PagingAndSortingRepository<Person, Long>{
+	Person findById(long currentId);
+
 
 
 }

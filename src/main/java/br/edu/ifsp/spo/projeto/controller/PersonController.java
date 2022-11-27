@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifsp.spo.projeto.models.Person;
@@ -27,26 +26,46 @@ public class PersonController {
 		this.personService = personService;
 	}
 
-	@GetMapping("/list")
-	public Iterable<Person> list(){
-		return personService.list();
-	}
-	
+
 	@GetMapping("/pessoas/lista/{pageNumber}")
 	public String getOnePage(Model model, @PathVariable("pageNumber") int currentPage) {
 		Page<Person> page = personService.findPage(currentPage);
 		int totalPages = page.getTotalPages();
 		long totalItem = page.getTotalElements();
 		List<Person> persons = page.getContent();
-		
+
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("totalItems", totalItem);
 		model.addAttribute("persons", persons);
-		
+
 		return "user/index";
 	}
-	
+
+	@RequestMapping("pessoas/{currentId}")
+	public ModelAndView detailsPerson(@PathVariable("currentId") long currentId) {
+		Person person = personRepository.findById(currentId);
+		ModelAndView mv = new ModelAndView("user/details");
+		mv.addObject("person", person);
+		return mv;
+
+
+	}
+	@GetMapping("pessoas/search/{region}/{pageNumber}")
+	public String getOnePage(Model model, @PathVariable("region") String region, @PathVariable("pageNumber") int currentPage) {
+		Page<Person> page = personService.findPage(currentPage);
+		int totalPages = page.getTotalPages();
+		long totalItem = page.getTotalElements();
+		List<Person> persons = page.getContent();
+
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("totalItems", totalItem);
+		model.addAttribute("persons", persons);
+
+		return "user/search";
+	}
+
 	@GetMapping("/pessoas/lista/")
 	public String getAllPages(Model model){
 	    return getOnePage(model, 1);

@@ -3,12 +3,15 @@ package br.edu.ifsp.spo.projeto.models;
 import javax.persistence.Embeddable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.opencsv.bean.CsvBindByName;
 
 @Embeddable
 public class Timezone {
 
+	@CsvBindByName
 	@JsonProperty("description")
 	private String description;
+	@CsvBindByName
 	@JsonProperty("offset")
 	private String offset;
 

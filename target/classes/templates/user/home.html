@@ -1,0 +1,48 @@
+<html>
+	  <head>
+	  	<title>Projeto LP2A2</title>
+	  	<link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    
+ 		<link rel="stylesheet" type="text/css" href="static/style.css"/>
+	  </head>
+	<body style="background-color:#706e66;">
+	<div class="navbar " >
+		  <a href="/home">About</a>
+		  <a href="/pessoas/lista/1">Lista</a>
+		  <div class="dropdown">
+		  <button class="dropbtn" onclick="myFunction()">Regiões
+		    <i class="fa fa-caret-down"></i>
+		  </button>
+		  <div class="dropdown-content" id="myDropdown">
+		    <a href="/pessoas/search/nordeste/1">Nordeste</a>
+		    <a href="/pessoas/search/norte/1">Norte</a>
+		    <a href="/pessoas/search/centro-oeste/1">Centro-Oeste</a>
+		    <a href="/pessoas/search/sul/1">Sul</a>
+		    <a href="/pessoas/search/sudeste/1">Sudeste</a>
+		  </div>
+		  </div> 
+		</div>
+		<h1>Projeto LP2A4</h1>	
+		<h2>Brian Windson Oliveira<br>
+			SP3038963</h2>
+		<p><img src="https://media.tenor.com/svrKSuwrhOwAAAAi/rumia-dance.gif" id="img1"></img></p>	
+		
+		<script>
+		
+		function myFunction() {
+		  document.getElementById("myDropdown").classList.toggle("show");
+		}
+		
+			window.onclick = function(e) {
+		  if (!e.target.matches('.dropbtn')) {
+		  var myDropdown = document.getElementById("myDropdown");
+		    if (myDropdown.classList.contains('show')) {
+		      myDropdown.classList.remove('show');
+		    }
+		  }
+		}
+		</script>
+	</body>
+
+
+</html>

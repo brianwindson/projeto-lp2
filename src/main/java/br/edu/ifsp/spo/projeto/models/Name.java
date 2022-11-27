@@ -2,11 +2,18 @@ package br.edu.ifsp.spo.projeto.models;
 
 import javax.persistence.Embeddable;
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
+
 @Embeddable
 public class Name {
 
+	@CsvBindByName(column = "title", required = true)
+	@CsvBindByPosition(position = 1)
 	private String title;
+	@CsvBindByName(column = "first")
 	private String first;
+	@CsvBindByName
 	private String last;
 
 
